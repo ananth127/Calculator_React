@@ -6,6 +6,7 @@ function App() {
   const [name1,setName1]=useState('');
   const [name,setName]=useState('');
   const [count, setCount] = useState(0);
+  const [message,setMessege]=useState('Welcome !!');
   var c = 0;
 var sum=1;
   function handleClick() {
@@ -34,7 +35,24 @@ var sum=1;
     setSum1(sum);
     console.log("add= "+sum1);
     document.getElementById('in').value ="" ;
+    setMessege(`${num} is Added`);
     
+  }
+  function sub(){
+    if(parseInt(sum)===""){
+      console.log("sum");
+      sum='0';
+    }
+    if(parseInt(num)===""){
+      console.log("num");
+      num='0';
+    }
+    console.log(parseInt(sum)+" "+parseInt(num));
+    sum=(parseInt(sum1)-parseInt(num));
+    setSum1(sum);
+    console.log("add= "+sum1);
+    document.getElementById('in').value = "";
+    setMessege(`${num} is Subtracted`);
   }
   function mull(){
     if(parseInt(sum)===""){
@@ -50,6 +68,29 @@ var sum=1;
     setSum1(sum);
     console.log("add= "+sum1);
     document.getElementById('in').value = "";
+    setMessege(`${num} is Multiplied`);
+  }
+  function division(){
+    if(parseInt(sum)===""){
+      console.log("sum");
+      sum='1';
+    }
+    
+    if(parseInt(num)===""){
+      console.log("num");
+      num='1';
+    }
+    if(parseInt(sum)===0 || parseInt(num)===0){
+      setMessege("Can't do the operation !!");
+    }else{
+      console.log(parseInt(sum)+" "+parseInt(num));
+    sum=(parseInt(sum1)/parseInt(num));
+    setSum1(sum);
+    console.log("add= "+sum1);
+    document.getElementById('in').value = "";
+    setMessege(`${num} is Divided`);
+    }
+    
   }
   // function mull(){
   //   if(val===0){
@@ -71,6 +112,7 @@ var sum=1;
     }
     function btn(){
       console.log("hi every one!!");
+      setMessege("Button is Clicked !!!")
     }
     function Toggel({message}){
       return(
@@ -81,24 +123,28 @@ var sum=1;
     }
 
   return (
-  <>
+  <div>
+    <p>Message={message}</p>
   <label>
-    Calculator
+    Calculator :
   </label>
-  <input type='text' id='in' defaultValue={num} placeholder="Enter Number.." onChange={handleChange} />
+  <input type='number' id='in' defaultValue={num} placeholder="Enter Number.." onChange={handleChange} />
   { /* <input type='text' id='in' defaultValue={num} placeholder="Enter Number.." onChange={(e) => num=e.target.value} />
    */}
   {/* <input type='text' value={val} onChange={(e) =>setVal(e.target.value)} /> */}
-  <button onClick={add}>Add</button>
-  <button onClick={mull}>Mul</button>
+  <button onClick={add}>Add +</button>
+  <button onClick={sub}>Sub -</button>
+  <button onClick={mull}>Mul *</button>
+  <button onClick={division}>Div /</button>
   <p>sum={sum1}</p>
+  <button onClick={()=>setSum1(0)}>Reset</button><br></br><br></br>
   <label>
-    ajaf
-  </label>
+    using const "useState"
+  </label> :
   <input type='text' id="ns" value={name} onChange={(e)=>setName(e.target.value)}/>
   <p>{name}</p>
   <label>
-    using var
+    using var :
   </label>
   <input type='text' value={name1} onChange={handlechange}/>
   <p>{name1}</p>
@@ -112,9 +158,13 @@ var sum=1;
 <p> ----------------------------------------------------------------- 
 </p>
    
-   <Toggel message={()=>alert("See console output!! using ctr+Shift+C")} />
+   <Toggel message={()=>{alert("See console output!! using ctr+Shift+C") ;btn();}} />
 
-  </>
+   <div>
+    <p>Content COPYRIGHT &copy;  {new Date().getFullYear() by Ananth}</p>
+   </div>
+
+  </div>
 
 
 
