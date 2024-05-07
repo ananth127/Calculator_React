@@ -161,7 +161,7 @@ var sum=1;
    <Toggel message={()=>{alert("See console output!! using ctr+Shift+C") ;btn();}} />
 
    <div>
-    <p>Content COPYRIGHT &copy;  {new Date().getFullYear() by Ananth}</p>
+    <p>Content COPYRIGHT &copy;  {new Date().getFullYear() }by Ananth</p>
    </div>
 
   </div>
